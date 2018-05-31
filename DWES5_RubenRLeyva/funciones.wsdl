@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost/Rodriguez_Leyva_Ruben_DWES05_Tarea_E1/generadorWSDL.php" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost/Rodriguez_Leyva_Ruben_DWES05_Tarea_E1/generadorWSDL.php">
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://localhost/Rodriguez_Leyva_Ruben_DWES05_Tarea_E1/generadorWSDL.php">
+         <xsd:complexType name="\PDO">
+            <xsd:all />
+         </xsd:complexType>
+         <xsd:complexType name="type">
+            <xsd:all />
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="accesoBDRequest" />
+   <wsdl:message name="accesoBDResponse">
+      <wsdl:part name="accesoBDReturn" type="tns:\PDO" />
+   </wsdl:message>
+   <wsdl:message name="getVoluntariosRequest" />
+   <wsdl:message name="getVoluntariosResponse">
+      <wsdl:part name="getVoluntariosReturn" type="xsd:boolean" />
+   </wsdl:message>
+   <wsdl:message name="getAnunciosPublicosRequest" />
+   <wsdl:message name="getAnunciosPublicosResponse">
+      <wsdl:part name="getAnunciosPublicosReturn" type="xsd:boolean" />
+   </wsdl:message>
+   <wsdl:message name="getParticipacionVoluntariosRequest">
+      <wsdl:part name="loginUsuario" type="tns:type" />
+   </wsdl:message>
+   <wsdl:message name="getParticipacionVoluntariosResponse">
+      <wsdl:part name="getParticipacionVoluntariosReturn" type="xsd:boolean" />
+   </wsdl:message>
+   <wsdl:portType name="funcionesPortType">
+      <wsdl:operation name="accesoBD">
+         <wsdl:documentation>Método público encargado de crear la conexión a la base de datos.</wsdl:documentation>
+         <wsdl:input message="tns:accesoBDRequest" />
+         <wsdl:output message="tns:accesoBDResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getVoluntarios">
+         <wsdl:documentation>Método público que se encarga de recoger los diferentes voluntarios que hay en la base de datos.</wsdl:documentation>
+         <wsdl:input message="tns:getVoluntariosRequest" />
+         <wsdl:output message="tns:getVoluntariosResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getAnunciosPublicos">
+         <wsdl:documentation>Método público que se encarga de recoger los diferentes anuncios de tipo publico que hay en la base de datos.</wsdl:documentation>
+         <wsdl:input message="tns:getAnunciosPublicosRequest" />
+         <wsdl:output message="tns:getAnunciosPublicosResponse" />
+      </wsdl:operation>
+      <wsdl:operation name="getParticipacionVoluntarios">
+         <wsdl:documentation>Método público que se encarga de recoger los diferentes voluntarios que hay en la base de datos.</wsdl:documentation>
+         <wsdl:input message="tns:getParticipacionVoluntariosRequest" />
+         <wsdl:output message="tns:getParticipacionVoluntariosResponse" />
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="funcionesBinding" type="tns:funcionesPortType">
+      <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="accesoBD">
+         <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Rodriguez_Leyva_Ruben_DWES05_Tarea_E1/generadorWSDL.php?method=accesoBD" style="rpc" />
+         <wsdl:input>
+            <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getVoluntarios">
+         <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Rodriguez_Leyva_Ruben_DWES05_Tarea_E1/generadorWSDL.php?method=getVoluntarios" style="rpc" />
+         <wsdl:input>
+            <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getAnunciosPublicos">
+         <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Rodriguez_Leyva_Ruben_DWES05_Tarea_E1/generadorWSDL.php?method=getAnunciosPublicos" style="rpc" />
+         <wsdl:input>
+            <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getParticipacionVoluntarios">
+         <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Rodriguez_Leyva_Ruben_DWES05_Tarea_E1/generadorWSDL.php?method=getParticipacionVoluntarios" style="rpc" />
+         <wsdl:input>
+            <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="funciones">
+      <wsdl:documentation>Clase funciones  Desarrollo Web en Entorno Servidor Tema 5: Servicios web Tarea 5</wsdl:documentation>
+      <wsdl:port name="funcionesPort" binding="tns:funcionesBinding">
+         <soap-env:address location="http://localhost/Rodriguez_Leyva_Ruben_DWES05_Tarea_E1/generadorWSDL.php" />
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
